@@ -25,15 +25,13 @@ header {
     cursor: pointer;
 }
 
-#color-btn__inner {
-    width: 51px;
-    height: 31px;
-    margin: 5px auto;
-    background-color: #F55A5A;
-    border: 0.5px solid #313131;
+#color-pool {
+    width: 61px;
+    height: 42px;
+    cursor: pointer;
 }
 
-#sch-box {
+#scheme-box {
     margin: 0 20px;
 }
 
