@@ -2,7 +2,6 @@ let colorPool;
 const defaultColor = "#F55A5A";
 const BASE_URL = 'https://www.thecolorapi.com/';
 const schemeBtn = document.getElementById("schemeBtn");
-
 // Once page is loaded, load event handler (startup()) is called
 window.addEventListener("load", startup, false);
     
@@ -30,7 +29,6 @@ schemeBtn.addEventListener("click", () => {
                 // Add returned values to hexValue array
                 hexValues.push(element.hex.value)
             })
-
             const colValues = [...hexValues]; 
             const cols = document.querySelectorAll(".col");
             const hexNames = document.querySelectorAll(".hex");
@@ -44,7 +42,6 @@ schemeBtn.addEventListener("click", () => {
                 <span class="tooltiptext">Copy to Clipboard</span></div>`;
             });
     });
-
 });
  
 // Copy text to clipboard
