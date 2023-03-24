@@ -4,15 +4,13 @@ const BASE_URL = 'https://www.thecolorapi.com/';
 const schemeBtn = document.getElementById("schemeBtn");
 
 // Once page is loaded, load event handler (startup()) is called
-window.addEventListener("load", startup, false);
-    
+window.addEventListener("load", startup, false); 
 /* Gets a reference to the color <input> element in a variable colorPool
    then sets the color input's value to the value in defaultColor. */
 function startup() {
     colorPool = document.querySelector("#color-pool");
     colorPool.value = defaultColor;
 }
-  
 schemeBtn.addEventListener("click", () => {
     // create an array to hold the scheme colors returned
     const hexValues = [];
@@ -29,8 +27,7 @@ schemeBtn.addEventListener("click", () => {
             data.colors.forEach(element => {
                 // Add returned values to hexValue array
                 hexValues.push(element.hex.value)
-            })
-
+            });
             const colValues = [...hexValues]; 
             const cols = document.querySelectorAll(".col");
             const hexNames = document.querySelectorAll(".hex");
@@ -44,9 +41,8 @@ schemeBtn.addEventListener("click", () => {
                 <span class="tooltiptext">Copy to Clipboard</span></div>`;
             });
     });
-
 });
- 
+
 // Copy text to clipboard
 function hexCopy(element) {
     let copyText = element.innerHTML;
