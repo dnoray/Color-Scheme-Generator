@@ -1,13 +1,11 @@
 let colorPool;
 const defaultColor = "#F55A5A";
 const BASE_URL = 'https://www.thecolorapi.com/';
-const colorBtn = document.getElementById("color-btn__inner");
 const schemeBtn = document.getElementById("schemeBtn");
 
 // Once page is loaded, load event handler (startup()) is called
 window.addEventListener("load", startup, false);
-  
-  
+    
 /* Gets a reference to the color <input> element in a variable colorPool
    then sets the color input's value to the value in defaultColor. */
 function startup() {
@@ -15,29 +13,50 @@ function startup() {
     colorPool.value = defaultColor;
 }
   
-
-
-
 schemeBtn.addEventListener("click", () => {
-    // get user scheme choice
-    const userScheme = document.getElementById("scheme-choice").value;
+    // create an array to hold the scheme colors returned
+    const hexValues = [];
     // get user seed color choice
     colorPool = document.querySelector("#color-pool").value;
     // remove # from hexcode for url
-    colorPool = colorPool.slice(1)
+    colorPool = colorPool.slice(1);
+    // get user scheme choice
+    const userScheme = document.getElementById("scheme-choice").value;
     // fetch color scheme from color api
     fetch(`${BASE_URL}scheme?hex=${colorPool}&mode=${userScheme}&count=5`)
         .then(res => res.json())
         .then(data => {
-            document.querySelector(".col-1").style.backgroundColor = data.colors[0].hex.value;
-            document.querySelector(".hexcode1").innerHTML = data.colors[0].hex.value;
-            document.querySelector(".col-2").style.backgroundColor = data.colors[1].hex.value;
-            document.querySelector(".hexcode2").innerHTML = data.colors[1].hex.value;
-            document.querySelector(".col-3").style.backgroundColor = data.colors[2].hex.value;
-            document.querySelector(".hexcode3").innerHTML = data.colors[2].hex.value;
-            document.querySelector(".col-4").style.backgroundColor = data.colors[3].hex.value;
-            document.querySelector(".hexcode4").innerHTML = data.colors[3].hex.value;
-            document.querySelector(".col-5").style.backgroundColor = data.colors[4].hex.value;
-            document.querySelector(".hexcode5").innerHTML = data.colors[4].hex.value;
-        })
-})
+            data.colors.forEach(element => {
+                // Add returned values to hexValue array
+                hexValues.push(element.hex.value)
+            })
+
+            const colValues = [...hexValues]; 
+            const cols = document.querySelectorAll(".col");
+            const hexNames = document.querySelectorAll(".hex");
+            // Add returned values to columns background
+            cols.forEach((col) => {
+                col.style.backgroundColor = colValues.shift();
+            });
+            // Add returned values to footer
+            hexNames.forEach((hexName) => {
+                hexName.innerHTML = `<div class="tooltip" onclick="hexCopy(this)">${hexValues.shift()}
+                <span class="tooltiptext">Copy to Clipboard</span></div>`;
+            });
+    });
+
+});
+ 
+// Copy text to clipboard
+function hexCopy(element) {
+    let copyText = element.innerHTML;
+  
+    copyText = copyText.substr(0, 7);
+    navigator.clipboard.writeText(copyText)
+    .then(() => { 
+        element.lastChild.textContent = "Copied: " + copyText;
+     })
+    .catch((error) => { 
+        element.lastChild.textContent =`Copy failed! ${error}`; 
+    });
+}

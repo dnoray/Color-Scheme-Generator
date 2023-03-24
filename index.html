@@ -1,40 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        
-            <header>
+        <header>
+            <input type="color" id="color-pool"></input>
                 
-                <input type="color" id="color-pool"></input>
-                
-                <form id="scheme-box" style="flex: 6 1 312px">
-                    <select class="scheme-choice" id="scheme-choice">
-                        <option value="monochrome" selected>Monochrome</option>
-                        <option value="monochrome-dark">Monochrome-dark</option>
-                        <option value="monochrome-light">Monochrome-light</option>
-                        <option value="analogic">Analogic</option>
-                        <option value="complement">Complement</option>
-                        <option value="analogic-complement">Analogic-complement</option>
-                        <option value="triad">Triad</option>
-                    </select>
-                </form>
-                <button class="schemeBtn" id="schemeBtn" style="flex-grow: 0">Get color scheme</button>
-            </header>
-            <div class="content">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
+            <form id="scheme-box" style="flex: 6 1 312px">
+                <select class="scheme-choice" id="scheme-choice">
+                    <option value="monochrome" selected>Monochrome</option>
+                    <option value="monochrome-dark">Monochrome-dark</option>
+                    <option value="monochrome-light">Monochrome-light</option>
+                    <option value="analogic">Analogic</option>
+                    <option value="complement">Complement</option>
+                    <option value="analogic-complement">Analogic-complement</option>
+                    <option value="triad">Triad</option>
+                </select>
+            </form>
+            <button class="schemeBtn" id="schemeBtn" style="flex-grow: 0">Get color scheme</button>
+        </header>
+        <div class="content">
+            <div class="col col-1"></div>
+            <div class="col col-2"></div>
+            <div class="col col-3"></div>
+            <div class="col col-4"></div>
+            <div class="col col-5"></div>
+        </div>
+        <div class="hex-colors">
+            <div class="hex code1"><div class="tooltip" onclick="hexCopy(this)">#F55A5A
+                <span class="tooltiptext">Click to Copy</span></div>
             </div>
-            <div class="hex-colors">
-                <div class="hexcode1">#F55A5A</div>
-                <div class="hexcode2">#2B283A</div>
-                <div class="hexcode3">#FBF3AB</div>
-                <div class="hexcode4">#AAD1B6</div>
-                <div class="hexcode5">A626D3</div>
+            <div class="hex code2"><div class="tooltip" onclick="hexCopy(this)">#2B283A
+                <span class="tooltiptext">Click to Copy</span></div>
             </div>
+            <div class="hex code3"><div class="tooltip" onclick="hexCopy(this)">#FBF3AB
+                <span class="tooltiptext">Click to Copy</span></div>
+            </div>
+            <div class="hex code4"><div class="tooltip" onclick="hexCopy(this)">#AAD1B6
+                <span class="tooltiptext">Click to Copy</span></div>
+            </div>
+            <div class="hex code5"><div class="tooltip" onclick="hexCopy(this)">#A626D3
+                <span class="tooltiptext">Click to Copy</span></div>
+            </div>
+        </div>
         
         <script src="js/main.js"></script>
     </body>
