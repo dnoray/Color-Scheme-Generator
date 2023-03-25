@@ -2,7 +2,6 @@ let colorPool;
 const defaultColor = "#F55A5A";
 const BASE_URL = 'https://www.thecolorapi.com/';
 const schemeBtn = document.getElementById("schemeBtn");
-
 // Once page is loaded, load event handler (startup()) is called
 window.addEventListener("load", startup, false); 
 /* Gets a reference to the color <input> element in a variable colorPool
@@ -27,7 +26,8 @@ schemeBtn.addEventListener("click", () => {
             data.colors.forEach(element => {
                 // Add returned values to hexValue array
                 hexValues.push(element.hex.value)
-            });
+            })
+
             const colValues = [...hexValues]; 
             const cols = document.querySelectorAll(".col");
             const hexNames = document.querySelectorAll(".hex");
